@@ -14,7 +14,7 @@ Here's how to install the software...
 ### Package Manager  
 
 ```bash
-npm i flutter-initial
+npm install -g flutter-initial
 ```  
 
 ## Usage  

@@ -1,6 +1,6 @@
 {
   "name": "flutter-initial",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "flutter-initial.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
