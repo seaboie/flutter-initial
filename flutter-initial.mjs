@@ -28,6 +28,20 @@ program
 
 const options = program.opts();
 
+// Check if no options were provided
+if (Object.keys(options).length === 0) {
+  console.log();
+  console.log(chalk.red(`Oops !!! : No options were provided. you should add option too. `));
+  console.log();
+  program.outputHelp();
+  console.log();
+  console.log(chalk.blue(`Example: `));
+  console.log();
+  console.log(chalk.yellow(`flutterinit -l`));
+  console.log();
+  process.exit(1);
+}
+
 // Load tasks from storage or use default if not available
 let tasks = config.get("tasks") || [
   { id: 1, text: "Buy groceries", completed: false },
@@ -184,23 +198,33 @@ async function editTask() {
 }
 
 async function main() {
-  if (options.list) {
-    await listTasks();
-  } else if (options.add) {
-    await addTask();
-  } else if (options.complete) {
-    await completeTask();
-  } else if (options.edit) {
-    await editTask();
-  } else if (options.delete) {
-    await deleteTask();
-  } else {
-    console.log(
-      chalk.yellow("Please specify an option. Use --help for more information.")
-    );
+  switch (true) {
+    case options.list:
+      await listTasks();
+      break;
+    case options.add:
+      await addTask();
+      break;
+    case options.complete:
+      await completeTask();
+      break;
+    case options.edit:
+      await editTask();
+      break;
+    case options.delete:
+      await deleteTask();
+      break;
+    default:
+      console.log(
+        chalk.yellow(
+          `Please specify an option. Use --help for more information.`
+        )
+      );
+      console.log(chalk.blue(`Available options: `));
   }
+
 }
 
-main().catch((error) => {
+await main().catch((error) => {
   console.error(chalk.red("An error occurred:"), error);
 });
