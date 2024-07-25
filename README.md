@@ -14,12 +14,12 @@ Here's how to install the software...
 ### Package Manager  
 
 ```bash
-npm install -g flutter-initial
+
 ```  
 
 ## Usage  
 
 ```bash
-flutterinit
+
 ```   
 
